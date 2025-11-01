@@ -1,0 +1,38 @@
+// create database Snooker_House_Dibash; //
+
+use Snooker_House_Dibash;
+CREATE TABLE contact_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+Tables for Snooker House Booking system
+
+Table for snooker tables
+CREATE TABLE tables (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description VARCHAR(255)
+);
+
+-- Table for bookings
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    table_id INT NOT NULL,
+    customer_name VARCHAR(255) NOT NULL,
+    booking_date DATE NOT NULL,
+    start_time TIME NOT NULL,
+    duration_hours INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (table_id) REFERENCES tables(id)
+);
+
+INSERT INTO tables (name, description) VALUES
+('Table 1', 'Near the window'),
+('Table 2', 'Center hall'),
+('Table 3', 'Near the entrance');
+
+
